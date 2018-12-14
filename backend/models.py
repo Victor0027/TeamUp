@@ -105,7 +105,8 @@ class ServiceProvider(User):
 class Integrator(User):
     __tablename__ = 'integrator'
     id = db.Column(db.Integer, db.ForeignKey('user.id'), primary_key=True)
-
+    # def __init__(self, name, email, password):
+    #  User.__init__(self, name, email, password)
     __mapper_args__ = {
         'polymorphic_identity': 'integrator',
     }
@@ -118,6 +119,7 @@ class Project(Base):
     final_date = db.Column(db.Date, nullable=False)
     spending = db.Column(db.Float, nullable=False)
     tasks_completed = db.Column(db.Integer, nullable=True)
+    # problems_solved = db.Column(db.Integer, nullable=True)
     # Relationships
     client_id = db.Column(db.Integer, db.ForeignKey('client.id'),
                           nullable=False)
